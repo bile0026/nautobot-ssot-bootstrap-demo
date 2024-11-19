@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nautobot-bootstrap-data"
+version = "0.1.0"
+description = "Bootstrap Demo data for SSoT"
+authors = ["bile0026 <zacharybiles@gmail.com>"]
+readme = "README.md"
+packages = [{include = "nautobot_bootstrap_data"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pre-commit = "^3.5.0"
+yamllint = "^1.33.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

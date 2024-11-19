@@ -1,0 +1,4 @@
+---
+# .yamllint
+rules:
+  line-length: disable
