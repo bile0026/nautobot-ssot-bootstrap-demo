@@ -1,0 +1,327 @@
+{
+  // Place your nautobot-bootstrap-data workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // "scope": "javascript,typescript",
+  // "prefix": "log",
+  // "body": [
+  // "console.log('$1');",
+  // "$2"
+  // ],
+  // "description": "Log output to console"
+  // }
+  "Team Snippet": {
+    "scope": "yaml",
+    "prefix": "@team",
+    "description": "Insert a new team.",
+    "body": [
+      "  - name: ${1:team_name}",
+      "    phone:",
+      "    email:",
+      "    address:$0"
+    ]
+  },
+  "Contact Snippet": {
+    "scope": "yaml",
+    "prefix": "@contact",
+    "description": "Insert a new contact.",
+    "body": [
+      "  - name: ${1:name}",
+      "    phone:",
+      "    email:",
+      "    address:",
+      "    teams:",
+      "      - $0"
+    ]
+  },
+  "Secret Provider Snippet": {
+    "scope": "yaml",
+    "prefix": "@secret",
+    "description": "Insert a new secret provider.",
+    "body": [
+      " - name: ${1:secret_name}",
+      " provider: ${2|environment-variable,text-file|}",
+      " parameters:",
+      " variable: ${3:variable_name}",
+      " path: $0"
+    ]
+  },
+  "Secret Group Snippet": {
+    "scope": "yaml",
+    "prefix": "@secretGroup",
+    "description": "Insert a new secret group.",
+    "body": [
+      " - name: ${1:group_name}",
+      " secrets:",
+      " - name: ${2:secret_name_1}",
+      " secret_type: ${3:type_1}",
+      " access_type: $4",
+      " - name: ${5:secret_name_2}",
+      " secret_type: ${6:type_2}",
+      " access_type: $0"
+    ]
+  },
+  "Git Repo Snippet": {
+    "scope": "yaml",
+    "prefix": "@gitRepo",
+    "description": "Insert a new git repository.",
+    "body": [
+      " - name: ${1:repo_name}",
+      " url: https://${2:repo_url}",
+      " branch: ${3:branch_name}",
+      " secrets_group_name: ${4:group_name}",
+      " provided_data_type:",
+      " - ${0:data_type}"
+    ]
+  },
+  "Dynamic Group Snippet": {
+    "scope": "yaml",
+    "prefix": "@dynamicGroup",
+    "description": "Insert a new dynamic group.",
+    "body": [
+      " - name: ${1:group_name}",
+      " content_type: ${2:content_type}",
+      " description: '$3'",
+      " filter: |",
+      " ${0:filter}"
+    ]
+  },
+  "Computed Field Snippet": {
+    "scope": "yaml",
+    "prefix": "@computedField",
+    "description": "Insert a new computed field.",
+    "body": [
+      " - label: ${1:field_label}",
+      " content_type: ${2:content_type}",
+      " template: ${0:template}"
+    ]
+  },
+  "Tag Snippet": {
+    "scope": "yaml",
+    "prefix": "@tag",
+    "description": "Insert a new tag.",
+    "body": [
+      " - name: ${1:tag_name}",
+      " color: ${2:color}",
+      " description: '$3'",
+      " content_types:",
+      " - ${0:content_type}"
+    ]
+  },
+  "GraphQL Snippet": {
+    "scope": "yaml",
+    "prefix": "@graph",
+    "description": "Insert a new GraphQL query.",
+    "body": [
+      " - name: ${1:query_name}",
+      " query: |",
+      " ${0:query}"
+    ]
+  },
+  "Validated Software Snippet": {
+    "scope": "yaml",
+    "prefix": "@software",
+    "description": "Insert a new validated software version.",
+    "body": [
+      " - software: ${1:software_name} - ${2:version}",
+      " valid_since: '${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}'",
+      " valid_until: $3",
+      " preferred_version: ${4|true,false|}",
+      " devices: []",
+      " device_types: []",
+      " device_roles: []",
+      " inventory_items: []",
+      " object_tags: []",
+      " tags: []"
+    ]
+  },
+  "Location Type Snippet": {
+    "scope": "yaml",
+    "prefix": "@location_type",
+    "description": "Insert a new location type.",
+    "body": [
+      "  - name: ${1:location_type_name}",
+      "    parent: ${2:location_parent}",
+      "    nestable: ${3|false,true|}",
+      "    description: ''",
+      "    content_types:",
+      "      - ${0:content_type}"
+    ]
+  },
+  "Location Snippet": {
+    "scope": "yaml",
+    "prefix": "@location",
+    "description": "Insert a new location.",
+    "body": [
+      "  - name: ${1:location_name}",
+      "    location_type: ${2:location_type}",
+      "    parent: '$3'",
+      "    status: ${4:Active}",
+      "    facility: ''",
+      "    asn:",
+      "    time_zone: ''",
+      "    description: ''",
+      "    tenant: ''",
+      "    physical_address: ''",
+      "    shipping_address: ''",
+      "    latitude:",
+      "    longitude:",
+      "    contact_name: ''",
+      "    contact_phone: ''",
+      "    contact_email: ''",
+      "    tags: []$0",
+    ]
+  },
+  "Provider Snippet": {
+    "scope": "yaml",
+    "prefix": "@provider",
+    "description": "Insert a new provider.",
+    "body": [
+      "  - name: ${1:provider_name}",
+      "    asn: ${2:asn}",
+      "    account_number: '$3'",
+      "    portal_url: ''",
+      "    noc_contact: ''",
+      "    admin_contact: ''",
+      "    tags: []$0",
+    ]
+  },
+  "Provider Network Snippet": {
+    "scope": "yaml",
+    "prefix": "@provider_network",
+    "description": "Insert a new provider network.",
+    "body": [
+      "  - name: ${1:provider_network_name}",
+      "    provider: ${2:provider_name}",
+      "    description: ''",
+      "    comments: ''",
+      "    tags: []$0",
+    ]
+  },
+  "Circuit Type Snippet": {
+    "scope": "yaml",
+    "prefix": "@circuit_type",
+    "description": "Insert a new circuit type.",
+    "body": [
+      "  - name: ${1:circut_type}",
+      "    description: ''$0",
+    ]
+  },
+  "Circuit Snippet": {
+    "scope": "yaml",
+    "prefix": "@circuit",
+    "description": "Insert a new circuit.",
+    "body": [
+      "  - circuit_id: '${1:circuit_id}'",
+      "    provider: ${2:provider_name}",
+      "    circuit_type: ${3:circuit_type}",
+      "    status: ${4:Active}",
+      "    date_installed: # YYYY-MM-DD",
+      "    commit_rate_kbps:",
+      "    description: ''",
+      "    tenant: ''",
+      "    tags: []$0",
+    ]
+  },
+  "Circuit Termination Snippet": {
+    "scope": "yaml",
+    "prefix": "@circuit_termination",
+    "description": "Insert a new circuit termination.",
+    "body": [
+      "  - name: '${1:circuit_id}__${2:provider_name}__${3:termination_side}'",
+      "    termination_type: ${4|Location,Provider Network|}",
+      "    location: '$5'",
+      "    provider_network: '$6'",
+      "    port_speed_kbps:",
+      "    upstream_speed_kbps:",
+      "    cross_connect_id: ''",
+      "    patch_panel_or_ports: ''",
+      "    description: ''",
+      "    tags: []$0",
+    ]
+  },
+  "Namespace Snippet": {
+    "scope": "yaml",
+    "prefix": "@namespace",
+    "description": "Insert a new namespace.",
+    "body": [
+      "  - name: ${1:name}",
+      "    location: '$2'",
+      "    description:$0",
+    ]
+  },
+  "RIR Snippet": {
+    "scope": "yaml",
+    "prefix": "@rir",
+    "description": "Insert a new rir.",
+    "body": [
+      "  - name: ${1:name}",
+      "    private: ${2|false,true|}",
+      "    description: ''$0",
+    ]
+  },
+  "Prefix Snippet": {
+    "scope": "yaml",
+    "prefix": "@prefix",
+    "description": "Insert a new prefix.",
+    "body": [
+      "  - network: ${1:netowrk_cidr}",
+      "    namespace: ${2:Global}",
+      "    prefix_type: ${3|network,container,pool|}",
+      "    status: ${4:Active}",
+      "    role: ''",
+      "    rir: ''",
+      "    date_allocated: # YYYY-mm-dd HH:mm:ss",
+      "    description: ''",
+      "    vrfs: []",
+      "    locations: []",
+      "    vlan: ${5:vlan_name}__${6:vlan_id}__${7:vlan_group_name}",
+      "    tenant: ''",
+      "    tags: []$0",
+    ]
+  },
+  "VRF Snippet": {
+    "scope": "yaml",
+    "prefix": "@vrf",
+    "description": "Insert a new vrf.",
+    "body": [
+      "  - name: ${1:name}",
+      "    namespace: ${2:Global}",
+      "    route_distinguisher: ''",
+      "    tenant: ''",
+      "    description: ''",
+      "    tags: []$0"
+    ]
+  },
+  "VLAN Group Snippet": {
+    "scope": "yaml",
+    "prefix": "@vlan_group",
+    "description": "Insert a new vlan group.",
+    "body": [
+      "  - name: ${1:name}",
+      "    location:$2",
+      "    description: ''$0"
+    ]
+  },
+  "VLAN Snippet": {
+    "scope": "yaml",
+    "prefix": "@vlan",
+    "description": "Insert a new vlan.",
+    "body": [
+      "  - name: ${1:name}",
+      "    vid: ${2:vlan_id_number}",
+      "    status: ${3:Active}",
+      "    role: ''",
+      "    locations: []",
+      "    vlan_group: $4",
+      "    tenant: ''",
+      "    description: ''",
+      "    tags: []$0"
+    ]
+  }
+}
